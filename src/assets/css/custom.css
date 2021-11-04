@@ -1,0 +1,9 @@
+.edit_pen {
+    float: right;
+    cursor: pointer;
+    color: #404040;
+}
+
+.cstm {
+    color: red;
+}
