@@ -2,29 +2,29 @@ import React, { useState, useEffect } from 'react';
 
 const MyBookings = () => {
 
-    const user_id = sessionStorage.getItem('user_id');
-    const [mybookings, setMyBookings] = useState([]);
+    // const user_id = sessionStorage.getItem('user_id');
+    // const [mybookings, setMyBookings] = useState([]);
 
-    useEffect(() => {
-        fetch(`https://vbooking.stokoza.co.za/backend/my-bookings.php?user_id=${user_id}`)
-            .then(res => res.json())
-            .then(result => {
-                setMyBookings(result)
-            })
-    },[user_id])
+    // useEffect(() => {
+    //     fetch(`https://vbooking.stokoza.co.za/backend/my-bookings.php?user_id=${user_id}`)
+    //         .then(res => res.json())
+    //         .then(result => {
+    //             setMyBookings(result)
+    //         })
+    // },[user_id])
 
-    const removeBooking = id => () => {
-        fetch(`https://vbooking.stokoza.co.za/backend/delete_booking.php?id=${id}`)
-            .then(res => res.json())
-            .then(result => {
-                fetch(`https://vbooking.stokoza.co.za/backend/my-bookings.php?user_id=${user_id}`)
-                    .then(res1 => res1.json())
-                    .then(result1 => {
-                        setMyBookings(result1)
-                    })
-            })
+    // const removeBooking = id => () => {
+    //     fetch(`https://vbooking.stokoza.co.za/backend/delete_booking.php?id=${id}`)
+    //         .then(res => res.json())
+    //         .then(result => {
+    //             fetch(`https://vbooking.stokoza.co.za/backend/my-bookings.php?user_id=${user_id}`)
+    //                 .then(res1 => res1.json())
+    //                 .then(result1 => {
+    //                     setMyBookings(result1)
+    //                 })
+    //         })
         
-    }
+    // }
     return (
         <div class="be-content">
             <div class="main-content container-fluid">
@@ -41,7 +41,7 @@ const MyBookings = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {
+                            {/* {
                                 mybookings.map( items => (
                                     <tr>
                                         <td>{items.venue}</td>
@@ -51,7 +51,7 @@ const MyBookings = () => {
                                         <td className="actions" onClick={removeBooking(items.id)}><i className="icon mdi mdi-delete"></i></td>
                                     </tr>
                                 ))
-                            }
+                            } */}
                         </tbody>
                         
                     </table>

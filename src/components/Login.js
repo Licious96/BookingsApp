@@ -8,37 +8,50 @@ const Login = () => {
 
     let history = useHistory();
     let [alert, setAlert] = useState([])
+    let [username, setUsername] = useState('')
+    let [password, setPassword] = useState('')
+    const [errors, setErrors] = useState([])
 
     const loginFunc = async () => {
         const formData = new FormData()
     
-        const username = document.getElementById("username").value
-        const password = document.getElementById("password").value
-    
         formData.append("username", username)
         formData.append("password", password)
-    
-        let res = await fetch('https://vbooking.stokoza.co.za/backend/login.php', 
-        {
-          method: 'POST',
-          body: formData
-        })
-          
-        let data = await res.json();
-          
-        if (!isNaN(data)){
-          sessionStorage.setItem('user_id', data)
-          history.push('/home')
-        }else if(data === 'Your username is not not registered') {
-          setAlert(data)
-        }else if (data === 'wrong password'){
-          setAlert('Wrong password')
+
+        let res = await fetch('http://127.0.0.1:8000/api/login', 
+            {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            
+            let data = await res.json();
+            setErrors(data)
+        try {
+            
+        } catch (error) {
+            console.log(error.json())
+            //setErrors(error.response.data)
         }
+
+        
+       
+          
+        // if (!isNaN(data)){
+        //   sessionStorage.setItem('user_id', data)
+        //   history.push('/home')
+        // }else if(data === 'Your username is not not registered') {
+        //   setAlert(data)
+        // }else if (data === 'wrong password'){
+        //   setAlert('Wrong password')
+        // }
     }
 
-    if (sessionStorage.getItem('user_id')) {
-        return <Redirect to='/home' />
-    }
+    // if (sessionStorage.getItem('user_id')) {
+    //     return <Redirect to='/home' />
+    // }
 
     return (
         <main className="be-splash-screen">
@@ -53,10 +66,12 @@ const Login = () => {
                                 <div dangerouslySetInnerHTML={{__html: alert}} className="invalid-feedback"></div>
                             </div>
                             <div className="form-group">
-                                <input className="form-control" id="username" type="text" placeholder="Staff number or email" defaultValue="202012345" />
+                                <input className="form-control" onChange={event => setUsername(event.target.value)} type="text" placeholder="Staff number or email" />
+                                {errors?.username ? <small className="text-danger">{errors.username}</small> : null}
                             </div>
                             <div className="form-group">
-                                <input className="form-control" id="password" type="password" placeholder="Password" defaultValue="12345" />
+                                <input className="form-control" onChange={event => setPassword(event.target.value)} type="password" placeholder="Password" />
+                                {errors?.password ? <small className="text-danger">{errors.password}</small> : null}
                             </div>
                             <div className="form-group row login-tools">
                                 <div className="col-6 login-remember">

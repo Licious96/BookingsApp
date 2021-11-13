@@ -16,19 +16,19 @@ const Home = () => {
     let history = useHistory();
     let user_id = sessionStorage.getItem('user_id')
 
-    const [user, setUser] = useState([])
+    // const [user, setUser] = useState([])
 
-    useEffect(()=>{
-        fetch(`https://vbooking.stokoza.co.za/backend/get_user.php?user_id=${user_id}`)
-        .then(res => res.json())
-        .then(result =>{
-            setUser(result)
-        })
-    },[user_id])
+    // useEffect(()=>{
+    //     fetch(`https://vbooking.stokoza.co.za/backend/get_user.php?user_id=${user_id}`)
+    //     .then(res => res.json())
+    //     .then(result =>{
+    //         setUser(result)
+    //     })
+    // },[user_id])
 
-    if (!sessionStorage.getItem('user_id')) {
-        return <Redirect to='/' />
-    }
+    // if (!sessionStorage.getItem('user_id')) {
+    //     return <Redirect to='/' />
+    // }
 
     const logout = () => {
         sessionStorage.removeItem('user_id');
@@ -46,10 +46,10 @@ const Home = () => {
                         <li className="nav-item dropdown"><Link className="nav-link dropdown-toggle"
                             to="#" data-toggle="dropdown" role="button"
                             aria-expanded="false"><img src="assets/img/avatar.png"
-                                alt="Avatar" /><span className="user-name">{user.f_name} {user.l_name}</span></Link>
+                                alt="Avatar" /><span className="user-name">qweerr</span></Link>
                             <div className="dropdown-menu" role="menu">
                             <div className="user-info">
-                                <div className="user-name">{user.f_name} {user.l_name}</div>
+                                <div className="user-name">qwert</div>
                                 <div className="user-position online">Available</div>
                             </div><Link className="dropdown-item" to="/home"><span
                                 className="icon mdi mdi-home"></span>Dashboard</Link><Link
@@ -93,7 +93,7 @@ const Home = () => {
                 <Route path={`${path}/all-bookings`} component={AllBookings} />
                 <Route path={`${path}/make-bookings`} component={MakeBookings} />
                 <Route path={`${path}/profile`} render={()=> <Profile /> } />  
-                <Route path={`${path}/editprofile`} render={()=> <EditProfile user={user} /> } />  
+                <Route path={`${path}/editprofile`} render={()=> <EditProfile /> } />  
             </Switch>
             </div>
         </Router>

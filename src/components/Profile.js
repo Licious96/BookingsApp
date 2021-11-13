@@ -5,16 +5,16 @@ import { useState, useEffect } from "react";
 
 const Profile = () => {
 
-    const user_id = sessionStorage.getItem('user_id')
-    const [user, setUser] = useState([])
+    // const user_id = sessionStorage.getItem('user_id')
+    // const [user, setUser] = useState([])
 
-    useEffect(()=>{
-        fetch(`https://vbooking.stokoza.co.za/backend/get_user.php?user_id=${user_id}`)
-        .then(res => res.json())
-        .then(results =>{
-            setUser(results)
-        })
-    },[user_id])
+    // useEffect(()=>{
+    //     fetch(`https://vbooking.stokoza.co.za/backend/get_user.php?user_id=${user_id}`)
+    //     .then(res => res.json())
+    //     .then(results =>{
+    //         setUser(results)
+    //     })
+    // },[user_id])
 
     return (
         <div class="be-content">
@@ -27,7 +27,7 @@ const Profile = () => {
                                 <div class="user-display-bottom">
                                     <div class="user-display-avatar"><img src={Avatar} alt="Avatar" /></div>
                                     <div class="user-display-info">
-                                        <div class="name">{user.f_name} {user.l_name}<Link to="/home/editprofile"><span class="icon mdi mdi-edit edit_pen"></span></Link></div>
+                                        <div class="name"><Link to="/home/editprofile"><span class="icon mdi mdi-edit edit_pen"></span></Link></div>
                                     </div>
                                 </div>
                             </div>
@@ -38,27 +38,27 @@ const Profile = () => {
                                             <tr>
                                                 <td class="icon"><span class="mdi mdi-bookmark"></span></td>
                                                 <td class="item">Module Name<span class="icon s7-portfolio"></span></td>
-                                                <td>{user.module_name}</td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td class="icon"><span class="mdi mdi-bookmark-outline"></span></td>
                                                 <td class="item">Module Code<span class="icon s7-gift"></span></td>
-                                                <td>{user.module_code}</td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td class="icon"><span class="mdi mdi-email"></span></td>
                                                 <td class="item">Email<span class="icon s7-gift"></span></td>
-                                                <td>{user.email}</td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td class="icon"><span class="mdi mdi-account"></span></td>
                                                 <td class="item">Staff No.<span class="icon s7-gift"></span></td>
-                                                <td>{user.staff_no}</td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td class="icon"><span class="mdi mdi-smartphone-android"></span></td>
                                                 <td class="item">Contacts<span class="icon s7-phone"></span></td>
-                                                <td>{user.contacts}</td>
+                                                <td></td>
                                             </tr>
                                         </tbody>
                                     </table>

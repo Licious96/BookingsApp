@@ -2,15 +2,15 @@ import React, {useState, useEffect} from 'react'
 
 const AllBookings = () => {
 
-    const [item, setItem] = useState([]);
+    // const [item, setItem] = useState([]);
 
-    useEffect(()=>{
-        fetch(`https://vbooking.stokoza.co.za/backend/all-bookings.php`)
-        .then(res => res.json())
-        .then(result=> {
-            setItem(result)
-        })
-    },[])
+    // useEffect(()=>{
+    //     fetch(`https://vbooking.stokoza.co.za/backend/all-bookings.php`)
+    //     .then(res => res.json())
+    //     .then(result=> {
+    //         setItem(result)
+    //     })
+    // },[])
 
     return (
         <div className="be-content">
@@ -30,7 +30,7 @@ const AllBookings = () => {
                         </thead>
 
                         <tbody>
-                            {
+                            {/* {
                                 item.map(item => (
                                     <tr>
                                         <td>{item.venue}</td>
@@ -40,7 +40,7 @@ const AllBookings = () => {
                                         <td>{item.email} <br/> 0{item.lecturer_contacts}</td>
                                     </tr> 
                                 ))
-                            }
+                            } */}
                                                
                         </tbody>
                     </table>

@@ -6,128 +6,21 @@ const Register = () => {
 
     let history = useHistory();
 
+
     const registerFunc = async () => {
-        const f_name = document.querySelector('#f_name').value;
-        const l_name = document.querySelector('#l_name').value;
-        const email = document.querySelector('#email').value;
-        const staff_no = document.querySelector('#staff_no').value;
-        const contacts = document.querySelector('#contacts').value;
-        const module_name = document.querySelector('#module_name').value;
-        const module_code = document.querySelector('#module_code').value;
-        const password = document.querySelector('#password').value;
-        const re_password = document.querySelector('#re_password').value;
-        const checkbox = document.querySelector('#check1');
-
-        const f_name_error = document.querySelector('#f_name_error');
-        const l_name_error = document.querySelector('#l_name_error');
-        const staff_no_error = document.querySelector('#staff_no_error');
-        const email_error = document.querySelector('#email_error');
-        const contacts_error = document.querySelector('#contacts_error');
-        const module_code_error = document.querySelector('#module_code_error');
-        const module_name_error = document.querySelector('#module_name_error');
-        const password_error = document.querySelector('#password_error');
-        const re_password_error = document.querySelector('#re_password_error');
-
-        f_name_error.innerHTML = "";
-        l_name_error.innerHTML = "";
-        email_error.innerHTML = "";
-        staff_no_error.innerHTML = "";
-        contacts_error.innerHTML = "";
-        module_code_error.innerHTML = "";
-        module_name_error.innerHTML = "";
-        password_error.innerHTML = "";
-        re_password_error.innerHTML = "";
-
-        if (f_name.replace(/\s/g, "").length === 0) {
-            f_name_error.innerHTML = "Enter your first name";
-        }
-        if (l_name.replace(/\s/g, "").length === 0) {
-            l_name_error.innerHTML = "Enter your last name";
-        }
-        if (staff_no.replace(/\s/g, "").length === 0) {
-            staff_no_error.innerHTML = "Enter your staff number";
-        }
-
-        if (isNaN(staff_no)) {
-            staff_no_error.innerHTML = "Staff number is invalid";
-        }
-
-        if (email.replace(/\s/g, "").length === 0) {
-            email_error.innerHTML = "Enter your email address";
-        }
-
-        if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)) {
-            
-        }else {
-            email_error.innerHTML = "Please enter a valid email address";
-        }
-
-        if (contacts.replace(/\s/g, "").length === 0) {
-            contacts_error.innerHTML = "Enter your contacts";
-        }
-
-        if (isNaN(contacts)) {
-            contacts_error.innerHTML = "Contact number is invalid";
-        }
-
-        if (module_name.replace(/\s/g, "").length === 0) {
-            module_name_error.innerHTML = "Enter your module name";
-        }
-
-        if (module_code.replace(/\s/g, "").length === 0) {
-            module_code_error.innerHTML = "Enter your module code";
-        }
-        if (password.replace(/\s/g, "").length === 0) {
-            password_error.innerHTML = "Create a password";
-        }
-        const passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{3,20}$/;
-
-        if(f_name.replace(/\s/g, "") && l_name.replace(/\s/g, "") && email.replace(/\s/g, "") && staff_no.replace(/\s/g, "") && module_code.replace(/\s/g, "") && module_name.replace(/\s/g, "") && password.replace(/\s/g, "") && contacts.replace(/\s/g, "")){
-            if (password.match(passw)) {
-                if (password === re_password) {
-                    if (checkbox.checked) {
-                        const formData = new FormData()
-                        formData.append('f_name', f_name)
-                        formData.append("l_name", l_name)
-                        formData.append("email", email)
-                        formData.append("contacts", contacts)
-                        formData.append("staff_no", staff_no)
-                        formData.append("module_name", module_name)
-                        formData.append("module_code", module_code)
-                        formData.append("password", password)
-
-                        let res = await fetch("http://localhost/react-app/backend/register.php", {
-                            method: "POST",
-                            body: formData
-                        })
-
-                        let data = await res.json()
-
-                        if(!isNaN(data)) {
-                            console.log(data)
-                            sessionStorage.setItem("user_id", data)
-                            history.push('/home')
-                        }else{
-                            document.querySelector("#result").innerHTML = data
-                        }
-                        
-                    } else {
-                        document.querySelector("#result").innerHTML = '<div class="alert alert-primary p-3" role="alert">Please accept the terms and conditions below!</div>';
-                    }
-                } else {
-                    re_password_error.innerHTML = "Passwords do not match";
-                    return;
-                }
-            }else{
-                password_error.innerHTML = "Password should contain at least one uppercase, one character and one number";
-                return;
-            }
-        }
         
-    }
+// let res = await fetch("http://localhost/react-app/backend/register.php", {
+//                             method: "POST",
+//                             body: formData
+//                         })
+//                         const formData = new FormData()
+//                         formData.append('f_name', f_name)
+//                         formData.append("l_name", l_name)
 
-    if (sessionStorage.getItem('user_id')) {
-        return <Redirect to='/home' />
+    
+
+//     if (sessionStorage.getItem('user_id')) {
+//         return <Redirect to='/home' />
     }
 
     return (
